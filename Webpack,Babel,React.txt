@@ -1,0 +1,19 @@
+﻿1. create package.json - npm init
+2. (dependency) install react and react dom (everything else here is dev dependency)
+3. intall webpack webpack-dev-derver webpack-cli . webpack-cli is for  building script.
+4. install babel for backward compatiblity / browser friendly
+   a. babel-core
+   b. babel-preset-env (to compile es6 and beyond)
+   c. babel-preset-react
+   d. babel-loader  (its kind of entry point of babel in webpack config) 
+5.  install html-webpack-plugin (to generate build html file automatcaly when we build, it will also has refernece to bundeled JS file)
+------------------------------------------------------------------
+
+now configure webpack and other stuff (mainly just webpack.config.js and .babelrc file)
+
+write react code
+
+then write script in package.json to start dev-server(i.e,development mode) and for build (i.e,production mode)
+
+(URL - https://www.youtube.com/watch?v=deyxI-6C2u4)
+(GITHUB - https://github.com/bradtraversy/react_webpack_starter)

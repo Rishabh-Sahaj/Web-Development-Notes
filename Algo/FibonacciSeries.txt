@@ -1,0 +1,11 @@
+function fibo (n) {
+  var a = [0,1];
+  var i;
+  var arrLen = n-1;
+  for (i=2;i<=arrLen;i++){
+    a[i]=a[i-2]+a[i-1];
+  }
+  
+  return a;
+}
+console.log(fibo(21))

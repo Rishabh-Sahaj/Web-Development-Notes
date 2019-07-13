@@ -1,0 +1,13 @@
+// % (modulus) operator return remainer.In a % b  if dividend i.e, 'a', is < 'b' then remainder is 'a' only  
+
+
+function greatestCommonDivisor(a, b){
+   if(b == 0)
+     return a;
+   else 
+     return greatestCommonDivisor(b, a%b);
+}
+   
+
+console.log(greatestCommonDivisor(42,30));
+console.log(30%42)

@@ -1,0 +1,105 @@
+1.javaScript is function scoped not block scoped. means {} will not create scope unlike in c++ or Java but only functions can. (NOTE - this is not completely true. there are other ways also but for most part its true --- Java Brains (YouTube)). Thus if else won't create scope, nor does for loop etc. 
+
+2.function parameters are nothing but local scope variables.
+
+3.You can do write operation on undeclared variable but not red operation. eg: foo = 10; console.log(foo)// 10; console.log(bar) // Syntax error. NOTE:- undeclared vaiables are always registered in global scope if write operation is done, even if it is done in local scope.
+
+4.global object of javaScript depends on the run-time. eg: when browser is run-time then window is global object, for node run-time global is the global object.
+
+5.javaScript is both compiled and interpreted language. Interpreted because source code is executed directly, not any intermediate code (like machine code) that is converted on compilation step in c++ or java etc. Compiled because compilation step happens before interpretation but here any new intermediate code is not generated but run-time just take note of some things it needs for execution like declared variables and associate them with their respective scopes and hence makes the scope chain.
+
+6.At the time of interpretation, Interpreter (like browser) tries to execute statments by reading or writing to the variables but it first checks whether the variables have been noted down at the time of compilation, it starts checking from that scope, in the scope chain made before, where it has been encounterd by the Interpreter and if it does not find it there it moves one level up the scope till it reaches global scope.
+
+var a = 10;
+
+function outer(){
+    var b = a;
+    console.log(b);
+    function inner(){
+      var c = b;
+      console.log(c);
+      var b = 20;
+    }
+    inner();
+} 
+
+outer(); 
+//note that b has already been noted down in the scope chain made in compilation step, so interpreter won't move 1 level up in the chain to find.
+//RESULT:-
+// 10
+//undefined
+
+7. This is hoisting, i.e, the order of declerations (of variables or functions etc.) doesnot matter, as if the they were present on the top in their respective scopes (all because of previous compilation step).
+
+   fn(); //true
+   function fn(){ //fn is declared as function in compilation step only i.e, it has been assigned the particular function object.
+       console.log(true);
+   }
+
+   fn(); //undefined
+   var fn = function (){ // fn is declared as variable in compilation step.
+       console.log(true);
+   }
+
+8. c=c+1 // error
+
+9.when a particular function object is assigned (whether in compilation or interpretation step), the object also contains complete information of the entire scope chain at that point of time when function objet is being assigned, like it takes a snapshot of the scope chain at that time when function object is being created and assigned. The variables in the scope chain is ASSIGNED-BY-REFERENCE (i.e, it points to a location in memory ) in the function object. This makes a CLOSURE. 
+
+10. Because of Closure - Function can be called in totally different scope from the scope of its decleration / definition. Function does not has to depend on existence of any scope , it has all the information in itself to be executed and give result. 
+
+(MDN)A CLOSURE is the combination of a function and the lexical environment within which that function was declared. 
+
+(MDN)The reason is that functions in JavaScript form closures. A closure is the combination of a function and the lexical environment within which that function was declared. This environment consists of any local variables that were in-scope at the time the closure was created.
+
+(MDN)we have access to all three (global, outer functions scope, local) scopes for a closure. (Read this part carefully to understand why lexical scope is mentioned in the definitiion even though complete scope chain is accessible.)
+
+11. When function execution is completed its scope is destroyed i.e, it does not exist but a variables inside might still exist with their respective value if any function object still points to it (assign by reference).
+
+12. var a=10;
+
+function outer (){
+  var b = 20;
+  function inner (){
+    a++;
+    b++;
+    console.log(a);
+    console.log(b);
+  };
+  
+  return inner;
+  
+}
+
+var innerfn = outer();
+innerfn();                     
+var innerfn2 = outer();                                          
+innerfn2(); 
+//11
+//21
+//12
+//21
+
+
+
+13. for(let i;;){} // i gets a new binding for every iteration of the loop. (as let is block scoped unlike var which would have been a global / outer variable if used here.)
+when the let expression is used, every iteration creates a new lexical scope chained up to the previous scope.
+(URL - https://stackoverflow.com/questions/16473350/let-keyword-in-the-for-loop) 
+
+14. whats-the-difference-between-using-let-and-var? (URL - https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var)
+
+15. CLOSURES are used for coding asynchronous Javascript, In async. JS we make use of Closures by passing a reference of the function of the closure as parameters to async. function calls. These parameters are also called callbacks or callback functions and they are used in synchronous JS also.
+
+16. Promises are just the (OOPS) way to handle Asynchronous code. To structure the response we get from asyn. behaviour in an object first, before using it (My Understanding). 
+
+17. To make a promise we use promise constructor which takes a function (callback function) inside which the asyn. code is put. so in async. code, in the place of where we used to pass a callback function which was made to execute after when response has come, now we pass resolve / reject as that callback which executes when response has come and their functionality is to fill the promise object with the response data. 
+
+    let timeoutPromise = new Promise((resolve, reject) => {
+      setTimeout(function(){
+        resolve('Success!');
+      }, 2000);
+    });
+
+    timeoutPromise
+    .then((message) => {
+      alert(message);
+    })

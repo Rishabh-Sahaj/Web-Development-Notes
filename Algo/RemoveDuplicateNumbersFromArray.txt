@@ -1,0 +1,5 @@
+var hasDuplicates = [1,2,3,3,4,5,3,5,45,68,89,100,45,77,45,89,90,89]; 
+var uniqueArr = hasDuplicates.filter((no, index, arr) => {
+        return arr.indexOf(no) === index;
+});
+       console.log(uniqueArr);

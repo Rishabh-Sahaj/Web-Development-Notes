@@ -1,0 +1,57 @@
+function isPrime (n) {
+  if(n<2 || !Number.isInteger(n)){
+    return false;
+  }
+  else if(n===2) {
+    return true;
+  }
+  else  if(n%2===0) {
+   return false;
+  }
+  else {
+    var i;
+    var half_n = n/2; 
+    for (i=3;i<=half_n;i+=2) {
+      if(n%i === 0){
+        return false;
+      } else {
+        continue;
+      }
+    }
+  }
+  
+  return true;
+} 
+
+
+
+function findPrimeFactors(x) {
+  var primeFactors = []
+  if(isPrime(x)) {
+    primeFactors.push(x);
+    return primeFactors;
+  } 
+  else if (x%2===0){
+    primeFactors.push(2);
+    var i;    
+    for(i=3;i<=x/2;i+=2){
+      if(x%i===0 && isPrime(i)) {
+        primeFactors.push(i);
+      }
+    } 
+     return primeFactors;
+  }
+  else if (x%2!==0) {
+    var i;    
+    for(i=3;i<=x/2;i+=2){
+      if(x%i===0 && isPrime(i)) {
+        primeFactors.push(i);
+      }
+    } 
+     return primeFactors;
+  }
+}
+
+
+console.log(findPrimeFactors(210));
+

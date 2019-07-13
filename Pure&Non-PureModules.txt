@@ -1,0 +1,56 @@
+
+When you need to import something that doesn't export anything, but does something else, this is a side effect only module. You import it only to initialize it.
+eg:- import "my-module"; This will import the entire module for side effects only
+
+Pure and Non Pure Modules
+--------------------------
+
+If you think about modules as functions, a module that only effects the scope by exporting it's content is like a function that always returns the same thing (a pure function without parameters). No matter how many times you'll import react 15.01, you'll always get an object that contains the same methods.
+
+A module with side-effects is one that changes the scope in other ways then returning something, and it's effects are not always predictable, and can be affected by outside forces (non pure function). A polyfill for example, might not do anything, because it finds that the feature that it enables is already supported by the browser.
+(URL - https://stackoverflow.com/questions/41127479/es6-import-for-side-effects-meaning)
+
+
+Pure and Non Pure Functions
+--------------------------
+A pure function is a function which:
+
+1.Given the same input, will always return the same output.
+2.Produces no side effects, which means that it can’t alter any external state.
+
+eg: - Math.max() takes numbers as arguments and returns the largest number: Math.max(2, 8, 5); // 8
+
+Pure functions are completely independent of outside state, and as such, they are immune to entire classes of bugs that have to do with shared mutable state. 
+Pure functions are also extremely independent — easy to move around, refactor, and reorganize in your code, making your programs more flexible and adaptable to future changes.
+
+
+eg: - // impure addToCart mutates existing cart
+const addToCart = (cart, item, quantity) => {
+  cart.items.push({
+    item,
+    quantity
+  });
+  return cart;
+};
+
+It works by passing in a cart, and item to add to that cart, and an item quantity. The function then returns the same cart, with the item added to it.
+
+The problem with this is that we’ve just mutated some shared state. Other functions may be relying on that cart object state to be what it was before the function was called, and now that we’ve mutated that shared state, we have to worry about what impact it will have on the program logic if we change the order in which functions have been called. Refactoring the code could result in bugs popping up, which could screw up orders, and result in unhappy customers.
+
+Now consider this version:
+
+eg:- // Pure addToCart() returns a new cart
+// It does not mutate the original.
+const addToCart = (cart, item, quantity) => {
+  const newCart = lodash.cloneDeep(cart);
+
+  newCart.items.push({
+    item,
+    quantity
+  });
+  return newCart;
+
+};
+
+It does not mutate the original cart.
+(URL - https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-pure-function-d1c076bec976)

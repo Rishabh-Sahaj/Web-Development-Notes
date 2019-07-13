@@ -1,0 +1,11 @@
+REMOVING OBJECTS IN AN ARRAY HAVING DUPLICATE ID, KEEPING ONLY ONE (KEEPING OBJECTS WITH UNIQUE IDs ONLY) 
+      const newState = hasDuplicates.filter((project, index, arr) => {
+        let indexOfFirstOccurence = arr.findIndex( (item) => {
+          return item.id === project.id;
+        });
+        if (index === indexOfFirstOccurence) {
+          return true;
+        } else {
+          return false;
+        }
+     });

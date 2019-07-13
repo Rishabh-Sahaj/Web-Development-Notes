@@ -1,0 +1,6 @@
+﻿1. ( <input type="text" name="name" value="Joe"/> ) in Html has set initial value of value attr. to 'Joe' and its after values as user's input as rendered on screen. But ( <input type="text" name="name" value="Joe"/> ) as jsx in react has set initial value of value attr. to 'Joe' and makes input element on screen uneditable / untypable, i.e, value of value attr. is not going to change. I did this in html as well as in react component and found out this difference.
+[may be because in html the element is handeled by html DOM whereas in react it is handeled by virtual DOM ]
+[the native behaviour of the input, to update its value on typing, is overridden by React here. ( URL - https://stackoverflow.com/questions/34006333/cant-type-in-react-input-text-field ) ]
+[SEE HtmlDOM-Things.txt ALSO]
+
+2. I think in React the attributes we write in opening tag of an element in jsx are not actually attributes but are properties . Thus value prop on input element is value property of input element object not value attribute.

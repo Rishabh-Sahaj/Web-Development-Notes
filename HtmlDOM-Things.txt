@@ -1,0 +1,18 @@
+﻿1. <input id="the-input" type="text" value="Name:"> 
+In contrast, the value property doesn't reflect the value attribute. Instead, it's the current value of the input. When the user manually changes the value of the input box, the value property will reflect this change. So if the user inputs "John" into the input box, then:
+
+theInput.value // returns "John"
+
+whereas:
+
+theInput.getAttribute('value') // returns "Name:"
+
+The value property reflects the current text-content inside the input box, whereas the value attribute contains the initial text-content of the value attribute from the HTML source code.
+
+So if you want to know what's currently inside the text-box, read the property. If you, however, want to know what the initial value of the text-box was, read the attribute. Or you can use the defaultValue property, which is a pure reflection of the value attribute:
+
+theInput.value                 // returns "John"
+theInput.getAttribute('value') // returns "Name:"
+theInput.defaultValue          // returns "Name:"
+
+[URL - https://stackoverflow.com/questions/6003819/what-is-the-difference-between-properties-and-attributes-in-html]

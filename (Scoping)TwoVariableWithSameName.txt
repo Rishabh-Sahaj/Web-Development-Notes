@@ -1,0 +1,19 @@
+ //You can't have two variables with the same name within the same scope and access both, the latter will overwrite the former, so they should have different names.
+
+ var a = 0; // global
+function doStuff() {
+    var a = 10; // local
+    alert(a);
+    alert(window.a)
+    function() {
+        var a = 20; // even more local
+        alert(a);
+        alert(window.a);
+    }();
+}
+alert(a);
+doStuff();
+alert(a);
+
+//The variable 'a' outside of the function can be accessed, as any variable not declared in a non-global scope (declared in global scope) is placed inside the window object. You cannot access the value of a inside the doStuff function. You can still access the global variable using window.a.
+URL - https://stackoverflow.com/questions/23710231/declaring-two-variable-with-the-same-name
