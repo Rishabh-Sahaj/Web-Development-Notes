@@ -103,3 +103,9 @@ when the let expression is used, every iteration creates a new lexical scope cha
     .then((message) => {
       alert(message);
     })
+
+18. a = [1,2]
+    b = [3,4]
+    c = a.concat(b) //[1,2,3,4] . SHORTCUT (USE SPREAD OPERATOR) - c = [...a,...b] 
+    //concat returns new array, doesnot mutate original array
+    

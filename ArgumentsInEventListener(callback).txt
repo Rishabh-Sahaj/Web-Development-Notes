@@ -1,0 +1,2 @@
+﻿one of solutions - using .bind method
+[URL - https://stackoverflow.com/questions/10000083/javascript-event-handler-with-parameters]

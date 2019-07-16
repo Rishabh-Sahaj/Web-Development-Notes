@@ -1,0 +1,1 @@
+﻿[URL - https://egghead.io/lessons/react-redux-pure-and-impure-functions]
