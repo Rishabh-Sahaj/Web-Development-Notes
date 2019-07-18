@@ -1,5 +1,7 @@
-﻿1. create package.json - npm init
-2. (dependency) install react and react dom (everything else here is dev dependency)
+﻿React Set Up (Without create-react-app)
+--------------------------------------
+1. create package.json - npm init
+2. (dependency) install react and react dom (everything else HERE is dev dependency)
 3. intall webpack webpack-dev-server webpack-cli .(webpack-cli is for  building script.)
 4. install babel for backward compatiblity / browser friendly
    a. babel-core
