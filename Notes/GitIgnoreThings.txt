@@ -1,0 +1,4 @@
+﻿1. Add .gitignore file (run 'touch .gitignore' in Git Bash)
+2. Write the rules.
+3. Run 'git add .gitignore'
+4. Run 'git commit -m "message" .gitignore'

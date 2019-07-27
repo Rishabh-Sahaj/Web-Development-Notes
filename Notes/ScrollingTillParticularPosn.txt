@@ -1,0 +1,1 @@
+﻿offsetTop, window.scrollTo -- are used for scrolling to a particular div whose value will be found by using offsetTop property on the element and then window.scrollTo(0,that value) to scroll till that element

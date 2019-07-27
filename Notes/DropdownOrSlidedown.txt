@@ -1,0 +1,11 @@
+﻿/* Dropdown or slide-down which will shift below the below elements */
+
+.dropdown-content {
+  height:0;
+  overflow: hidden;
+  transition: height 1s;
+}
+
+.dropdown:hover .dropdown-content {
+  height:50px;
+}

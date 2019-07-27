@@ -6,12 +6,13 @@
 4. install babel for backward compatiblity / browser friendly
    a. babel-core
    b. babel-preset-env (to compile es6 and beyond)
-   c. babel-preset-react
-   d. babel-loader  (its kind of entry point of babel in webpack config) 
+   c. babel-preset-react (to compile jsx)
+   d. babel-preset-stage-0 (to compile proposed features of future Javascript (means       future ECMA Script Specifications) like spread / rest operator)
+   e. babel-loader  (its kind of entry point of babel in webpack config) 
 5.  install html-webpack-plugin (to generate build html file inside the folder mentioned in webpack config (convention - build or dist folder) automaticaly when we build, it will also has refernece to bundeled JS file)
 ------------------------------------------------------------------
 
-now configure webpack and other stuff (mainly just webpack.config.js and .babelrc file)
+now configure webpack and other stuff (mainly just webpack.config.js and .babelrc file) ( For this you can create a webpack.config.js file in the root folder and webpack will automatically use it. If for some reason you want to use different config file depending on certain situations you can change this via command line by using the --config flag. [URL - https://webpack.js.org/configuration/] )
 
 write react code
 

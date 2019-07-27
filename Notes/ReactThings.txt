@@ -4,3 +4,5 @@
 [SEE HtmlDOM-Things.txt ALSO]
 
 2. I think in React the attributes we write in opening tag of an element in jsx are not actually attributes but are properties . Thus value prop on input element is value property of input element object not value attribute.
+
+3. Link and navlink are the ones because of which default refresh of the page can be stopped

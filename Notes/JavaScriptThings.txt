@@ -109,3 +109,65 @@ when the let expression is used, every iteration creates a new lexical scope cha
     c = a.concat(b) //[1,2,3,4] . SHORTCUT (USE SPREAD OPERATOR) - c = [...a,...b] 
     //concat returns new array, doesnot mutate original array
     
+19. var g = f.bind({a: 'azerty'});
+console.log(g()); // azerty
+
+var h = g.bind({a: 'yoo'}); // bind only works once!
+console.log(h()); // azerty
+[URL - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this]
+
+20.In arrow functions, this retains the value of the enclosing lexical context's this. 
+
+[URL - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this]
+
+21. THIS IS CHROME DEVELPOPER TOOLS' CONSOLE'S RESULT (I DID IT)
+       
+       var obj2= { x: function() { 
+                     function y() { 
+                       console.log(this); 
+                     } 
+                     y();
+                   }
+              }            
+            
+ 
+        
+obj2.x(); //Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ,                                                            parent: Window, …}
+
+
+
+        obj2= {x: function() {    
+                    var y = () => { 
+                              console.log(this) 
+                            };  
+                    y();
+                  }
+              } 
+      
+  
+obj2.x();// {x: ƒ}
+
+       
+        obj2= {x: function() {
+                    function inter() {
+                      var y = () => { 
+                                console.log(this) 
+                              };
+                      y(); 
+                    } 
+                    inter();
+                  }
+              }
+        
+obj2.x()
+; //Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+undefined
+var obj2= {x: function() {     var z = () => {function inter() { var y = () => { console.log(this) }; y(); } inter();} z();    } }            
+            
+VM1165:1 Uncaught SyntaxError: Unexpected identifier
+var obj2= {x: function() {     var z = () => {function inter() { var y = () => { console.log(this) }; y(); } inter();}; z();    } }            
+            
+undefined
+obj2.x()
+VM1190:1 Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+undefined
