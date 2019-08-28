@@ -1,4 +1,3 @@
-
 //No Odd No. can be divided by even no. as then it will be divided by 2 also and hence it will become an even no. Prime nos. are always > 1 (Integers).
 
 

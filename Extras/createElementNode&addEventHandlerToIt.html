@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sample</title>
+    <style type="text/css">
+    	.appendBtn {
+    		padding: 20px;
+    		margin-bottom: 20px;
+    	    font-size: 30px;
+    	    background-color: #eee;
+            font-weight: 500;
+            border: 1px solid yellow;
+            display: none;
+    	}
+    </style>
+</head>
+<body>
+	<div class="appendBtn">
+		<h3>yo bro</h3>
+	</div>
+	<button id='btn1' onclick="showDiv()">show div</button>
+
+	<script type="text/javascript">
+		function showDiv() {
+			let newNode = document.createElement('button');
+            newNode.setAttribute('id', 'btn2');
+            let newTextNOde = document.createTextNode('Hide Outside Button');
+            newNode.appendChild(newTextNOde);
+
+            document.querySelector('.appendBtn').appendChild(newNode)
+            document.querySelector('.appendBtn').style.display = 'block';
+
+            document.querySelector('#btn2').addEventListener( 'click', function () {
+			  document.querySelector('#btn1').style.display='none';
+		    });
+		}
+		// document.querySelector('#btn2').addEventListener( 'click', function () {
+		// 	document.querySelector('#btn1').style.display='none';
+		// });
+	</script>
+
+</body>
+</html>
